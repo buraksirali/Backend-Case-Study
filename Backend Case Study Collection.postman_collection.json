@@ -1,0 +1,213 @@
+{
+	"info": {
+		"_postman_id": "02a3b02b-b454-4756-97f4-97ffb96415c6",
+		"name": "Backend Case Study Collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "17152465"
+	},
+	"item": [
+		{
+			"name": "UserId Not In System",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"shareSymbol\": \"ABC\",\r\n    \"userId\": -1,\r\n    \"volume\": 5 \r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:7046/Share/buy",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7046",
+					"path": [
+						"Share",
+						"buy"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "User has no portfolio",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"shareSymbol\": \"ABC\",\r\n    \"userId\": 4,\r\n    \"volume\": 5 \r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:7046/Share/buy",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7046",
+					"path": [
+						"Share",
+						"buy"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "User has portfolio but it is not registered",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"shareSymbol\": \"ABC\",\r\n    \"userId\": 6,\r\n    \"volume\": 5 \r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:7046/Share/buy",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7046",
+					"path": [
+						"Share",
+						"buy"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "User and Portfolio are registered but Share is not",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"shareSymbol\": \"ABG\",\r\n    \"userId\": 1,\r\n    \"volume\": 5 \r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:7046/Share/buy",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7046",
+					"path": [
+						"Share",
+						"buy"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "User Portfolio and Share are registered but not enough to sell",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"shareSymbol\": \"ABC\",\r\n    \"userId\": 1,\r\n    \"volume\": 15 \r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:7046/Share/sell",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7046",
+					"path": [
+						"Share",
+						"sell"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "User Portfolio and Share are registered and just enough to sell",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"shareSymbol\": \"ABC\",\r\n    \"userId\": 1,\r\n    \"volume\": 10 \r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:7046/Share/sell",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7046",
+					"path": [
+						"Share",
+						"sell"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Buy Shares",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"shareSymbol\": \"ABC\",\r\n    \"userId\": 1,\r\n    \"volume\": 10 \r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:7046/Share/buy",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7046",
+					"path": [
+						"Share",
+						"buy"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
