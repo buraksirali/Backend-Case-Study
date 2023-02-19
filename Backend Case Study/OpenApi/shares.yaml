@@ -1,0 +1,70 @@
+﻿openapi: 3.0.3
+info:
+  title: Super Traders API
+  description: Super Traders API 
+  version: 1.0.0
+servers:
+  - url: https://localhost:7159/
+paths:
+  /buy:
+    post:
+      summary: Buy a share
+      operationId: sharesBuy
+      parameters:
+        - name: request
+          required: true
+          schema:
+            $ref: '#/components/schemas/BuyRequest'
+      responses:
+        '200':
+          description: A specific expense has returned
+        '404':
+          description: User, portfolio or share was not registered.
+  /sell:
+    post:
+      summary: Sell a share
+      operationId: sharesSell
+      parameters:
+        - name: request
+          required: true
+          schema:
+            $ref: '#/components/schemas/SellRequest'
+      responses:
+        '200':
+          description: A specific expense has returned
+components:
+  schemas:
+    BuyRequest:
+      type: object
+      additionalProperties: false
+      properties:
+        ShareSymbol:
+          type: string
+          minLength: 3
+          maxLength: 3
+        UserId:
+          type: integer
+        Volume:
+          type: integer
+          description: Volume of the share to buy
+      required:
+        - ShareId
+        - UserId
+        - Volume
+    SellRequest:
+      type: object
+      additionalProperties: false
+      properties:
+        ShareSymbol:
+          type: string
+          minLength: 3
+          maxLength: 3
+        UserId:
+          type: integer
+        Volume:
+          type: integer
+          description: Volume of the share to buy
+      required:
+        - ShareId
+        - UserId
+        - Volume

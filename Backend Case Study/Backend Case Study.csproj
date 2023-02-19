@@ -1,0 +1,67 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <RootNamespace>Backend_Case_Study</RootNamespace>
+  </PropertyGroup>
+
+	<ItemGroup>
+		<None Remove="OpenApi\shares.yaml" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Content Include="OpenApi\shares.yaml" />
+	</ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.3" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.3">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="7.0.3">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="7.0.3" />
+    <PackageReference Include="NSwag.AspNetCore" Version="13.18.2" />
+    <PackageReference Include="NSwag.MSBuild" Version="13.18.2">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+	<ItemGroup>
+		<OpenApi Include="OpenApi\shares.yaml" NSwagFile="OpenApi/nswag.json">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</OpenApi>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="OpenApi\GeneratedControllers\" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Include="..\.editorconfig" Link=".editorconfig" />
+	</ItemGroup>
+	<PropertyGroup>
+		<RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
+	</PropertyGroup>
+	<PropertyGroup>
+		<OpenApiLocation>OpenApi/shares.yaml</OpenApiLocation>
+		<SharesControllerName>Shares</SharesControllerName>
+		<SharesControllerNamespace>BackendCaseStudy.GeneratedControllers.Shares</SharesControllerNamespace>
+		<SharesControllerOutputDirectory>OpenApi/GeneratedControllers</SharesControllerOutputDirectory>
+	</PropertyGroup>
+	<Target Name="NSwag" AfterTargets="PreBuildEvent" Condition=" '$(Configuration)' == 'Debug' ">
+		<Exec Command="$(NSwagExe_Net60) run OpenApi/nswag.json /variables:Configuration=$(Configuration)">
+
+		</Exec>
+	</Target>
+	<Target Name="forceReGenerationOnRebuild" AfterTargets="CoreClean">
+		<Delete Files="$(SharesControllerOutputDirectory)\$(SharesControllerName).cs"></Delete>
+	</Target>
+
+</Project>
