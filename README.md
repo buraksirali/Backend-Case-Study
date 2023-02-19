@@ -29,6 +29,7 @@ This is a case study project I have written for a company's admission.
 }
 
 - Each time service is built, example data are put into the database to test with. Information about inserted data is included in an Excel Sheet in repository's root folder.
+- **Any data inserted into the database during service is runnig will be truncated after next build.**
 
 # Tech-stack
 - ASP.Net 6.0
