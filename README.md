@@ -17,11 +17,17 @@ This is a case study project I have written for a company's admission.
   * ip:port/Share/sell
 - endpoints are available. (Default hosting is https://localhost:7046)
 - Both endpoints require 3 parameters which are like below;
+
 { 
+
   ShareSymbol: string,
+  
   userId: integer,
+  
   Volume: integer,
+
 }
+
 - Each time service is built, example data are put into the database to test with. Information about inserted data is included in an Excel Sheet in repository's root folder.
 
 # Tech-stack
