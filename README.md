@@ -13,8 +13,8 @@ This is a case study project I have written for a company's admission.
 
 # API Endpoints
 - POST requests to;
-  * *:*/Share/buy
-  * *:*/Share/sell
+  * ip:port/Share/buy
+  * ip:port/Share/sell
 - endpoints are available. (Default hosting is https://localhost:7046)
 - Both endpoints require 3 parameters which are like below;
 { 
